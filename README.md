@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Backend API RESTful en Next.js - Gestión de Productos y Autenticación JWT
 
-## Getting Started
+**Evidencias:**
+* **GA7-220501096-AA5-EV01:** Diseño y desarrollo de servicios web - caso.
+* **GA7-220501096-AA5-EV02:** API.
 
-First, run the development server:
+Tecnólogo en Análisis y Desarrollo de Software (ADSO) - SENA.  
+**Autora Kellin Dayana Vargas Quijano.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 1. Arquitectura y Diseño de Servicios Web (EV01)
+El servicio web está construido bajo el estilo arquitectónico **REST** sobre **Next.js (App Router)**, empleando intercambio de datos en formato **JSON** y seguridad mediante **JSON Web Tokens (JWT - HS256)**.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Credenciales de Prueba Preconfiguradas
+* **Usuario:** `adminclaro`
+* **Contraseña:** `Claro2026*`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 2. Catálogo de Endpoints de la API (EV02)
 
-To learn more about Next.js, take a look at the following resources:
+### Módulo de Autenticación y Usuarios
+| Método | Endpoint | Descripción | Autenticación |
+| :--- | :--- | :--- | :--- |
+| `POST` | `/api/auth/register` | Registro de nuevos usuarios con validación de campos y unicidad. | Pública |
+| `POST` | `/api/auth/login` | Validación de credenciales y generación de **Token JWT**. | Pública |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Módulo CRUD de Productos (Requiere Header `Authorization: Bearer <TOKEN>`)
+| Método | Endpoint | Operación | Descripción |
+| :--- | :--- | :--- | :--- |
+| `POST` | `/api/productos` | **Insertar** | Crea un nuevo producto validando código único, precio y stock. |
+| `GET` | `/api/productos` | **Consultar** | Lista todos los productos registrados en el sistema. |
+| `GET` | `/api/productos?buscar=texto` | **Investigar** | Filtra productos por coincidencia en nombre, código o categoría. |
+| `GET` | `/api/productos/[id]` | **Investigar (ID)** | Consulta el detalle de un producto específico por su identificador. |
+| `PUT` | `/api/productos/[id]` | **Modificar** | Actualiza los datos de un producto existente. |
+| `DELETE` | `/api/productos/[id]` | **Eliminar** | Elimina permanentemente un producto por su ID. |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

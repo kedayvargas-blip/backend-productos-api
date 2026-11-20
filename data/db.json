@@ -1,0 +1,31 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "nombre": "Kellin Dayana Vargas Quijano",
+      "usuario": "adminclaro",
+      "password": "Claro2026*",
+      "rol": "administrador"
+    }
+  ],
+  "productos": [
+    {
+      "id": 1,
+      "codigo": "PRD-001",
+      "nombre": "Router Fibra Óptica Dual Band",
+      "categoria": "Redes y Conectividad",
+      "precio": 185000,
+      "stock": 25,
+      "descripcion": "Equipo terminal óptico Wi-Fi 6 para sedes empresariales."
+    },
+    {
+      "id": 2,
+      "codigo": "PRD-002",
+      "nombre": "Switch Administrable 24 Puertos Gigabit",
+      "categoria": "Infraestructura",
+      "precio": 640000,
+      "stock": 10,
+      "descripcion": "Switch rackeable capa 2 con soporte PoE+."
+    }
+  ]
+}
